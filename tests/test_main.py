@@ -7,9 +7,7 @@ from app.main import Validator, BurgerRecipe
 
 @pytest.mark.parametrize(
     "ingredients",
-    [[2, 0, 0, 1, 0, "ketchup"],
-     [2, 1, 2, 2, 1, "mayo"],
-     [3, 2, 3, 3, 2, "burger"]],
+    [[2, 0, 0, 1, 0, "ketchup"], [2, 1, 2, 2, 1, "mayo"], [3, 2, 3, 3, 2, "burger"]],
 )
 def test_burger_consists_of_right_ingredients(ingredients):
     burger = BurgerRecipe(*ingredients)
@@ -122,6 +120,8 @@ def test_incorrect_type_of_sauce():
 def test_ingredient_out_of_range(ingredients):
     with pytest.raises(ValueError):
         BurgerRecipe(*ingredients)
-        pytest.fail(msg="Text of the 'ValueError' should equal to "
-                        "Quantity should not be less than attribute minvalue "
-                        "and greater than attribute maxvalue.")
+        pytest.fail(
+            msg="Text of the 'ValueError' should equal to "
+            "Quantity should not be less than attribute minvalue "
+            "and greater than attribute maxvalue."
+        )
